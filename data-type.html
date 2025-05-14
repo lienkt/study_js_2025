@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Variable</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Data Type</h1>
+
+  <script type="text/javascript">
+
+    /*
+      Primitive values (compare value)
+        Numbers - Integers, floats
+        Strings - Any data under single quote, double quote or backtick quote
+        Boolean - true or false value
+        Null - empty value or no value
+        Undefined - a declared variable without a value
+        Symbol (ES2015)
+      Non-primitive values (compare reference)
+        Objects
+        Function
+        Array
+
+      immutable/mutable
+    */
+
+    const numA = 1; // memory A
+    const numB = 1; // memory B
+    console.log('compare value: ', numA === numB); // => true
+
+    const userA = { firstName: 'tony' }; // memory C
+    const userB = { firstName: 'tony' }; // memory D
+    userA.lastName = 'nguyen'
+    console.log('compare reference: ', userA === userB); // => false
+    console.log('userA: ', userA); // => false
+
+    /* Data String
+    A string in JavaScript must be surrounded by quotes.
+      Double quotes: "Hello".
+      Single quotes: 'Hello'.
+      Backticks: `Hello`. - template string - backticks
+    */
+    const str1 = "Hello 'word'" + " " + (numA + numB);
+    const str2 = 'Hello string2 \'das\' ';
+    const str3 = `Hello ${numA + numB}`; // template string es6
+
+    console.log('data type string: ', {
+      str1,
+      str2,
+      str3,
+      concat: str1.concat(str2, str3)
+    })
+  </script>
+</body>
+</html> 

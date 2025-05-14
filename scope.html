@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Variable</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Scope</h1>
+
+  <script type="text/javascript">
+    /*  
+      Types scope:
+        Local/Function scope.
+        Global scope.
+        Block scope.
+    */
+    const name = 'tony';
+    const age = 10;
+
+    function getUserInfo() {
+      const name = 'lien';
+      const age = 11;
+
+      function getUserChildren() {
+        const name = 'react';
+        const age = 11;
+        return `${name} with ${age}` // template string es6
+      }
+      return getUserChildren();
+    }
+
+    console.log(getUserInfo());
+
+
+    // block scope: let, const
+    const firstName = 'tony';
+
+    if (true) {
+      const firstName = 'lien';
+      console.log("inline block: ", firstName)
+    }
+    console.log("outline block: ", firstName)
+  </script>
+</body>
+</html> 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Variable</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Type Coercion</h1>
+
+  <script type="text/javascript">
+    /*
+    Operators and functions automatically convert the values given to them to the right type.
+    There are also cases when we need to explicitly convert a value to the expected type.
+      String conversions
+      Numeric conversions
+      Boolean conversions
+    */
+
+    // String conversions
+    const stringWay1 = true.toString();
+    const stringWay2 = String(true)
+    console.log('String conversions', {
+      stringWay1,
+      stringWay2
+    })
+
+    // Numeric conversions
+    const numbericWay1 = Number('adasd');
+    const numbericWay2 = Number('123');
+    const numbericWay3 = Number(true)
+    const numbericWay4 = Number(false)
+
+    console.log('Numeric conversions', {
+      numbericWay1,
+      numbericWay2,
+      numbericWay3,
+      numbericWay4
+    })
+
+    // Boolean conversions
+    console.log('Numeric conversions', {
+      boolean1: Boolean(0),
+    })
+  </script>
+</body>
+</html> 

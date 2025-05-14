@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Function</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Function</h1>
+
+  <script type="text/javascript">
+    /* 
+      - pure function
+        - not side effect (ko dc thay đổi các biến bên ngoài function đó)
+        - receive input, and return output same type value
+      - impure function
+        - has side effect
+      - function declarations
+        - name of function
+        - hoisting
+      - function expression
+        - no name of function
+        - not hoisting (can't access before declarations)
+      Notes: khi 1 function mà nhận vào 2 tham số trở lên, thì nên đổi parameter thành {}
+    */
+
+    // pure function
+    function getUserInfo(firstName, lastName, age, address) {
+      return `Hello ${firstName}, ${lastName}, ${age}`
+    }
+    const userInfo = getUserInfo('tony', '140');
+    console.log('userInfo: ', userInfo)
+
+    // impure function
+    const todos = [
+      { id: 1, name: 'react' },
+      { id: 2, name: 'angular' },
+    ]
+
+    function changeTitleTodo(dataSource = []) {
+      if (dataSource.length === 0) return []; // return early
+
+      dataSource[0].name = 'nguyen';
+      return dataSource;
+    }
+    const newTodos = changeTitleTodo(todos);
+    console.log('newTodos: ', {
+      newTodos,
+      todos
+    });
+
+    /* function declarations */
+    console.log(calculateSum({ firstName: 'tony' }))
+    function calculateSum({
+      x = 0,
+      y = 0, 
+      z = 0, 
+      age = 10, 
+      firstName
+    }) {
+      return x + y;
+    }
+
+     /* function expression */
+    const calculateArea = function(width, height) {
+      return width * height;
+    }
+    console.log('calculateArea: ', calculateArea(200, 300))
+
+  </script>
+</body>
+</html> 

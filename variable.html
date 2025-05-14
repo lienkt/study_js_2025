@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Variable</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Variable</h1>
+
+  <script type="text/javascript">
+    var firstName;
+    /* var
+      - hoisting
+        - đẩy các biến khai báo (variable), function lên trên đầu current scope
+        - chúng ta có thể access variable before declare
+      - allow assign
+      - function scope and global scope/variable
+    */
+
+    console.log('before declare firstName: ', firstName);
+    var firstName = 'tony'; // global variable
+    console.log('after declare firstName: ', firstName);
+
+    // function declaration: can excute function before declare
+    console.log('can excute function before declare: ', getUser());
+    function getUser() {
+      var lastName = 'nguyen'; // local variable
+      return lastName
+    }
+
+
+    /* let
+      - no hoisting
+      - allow assign
+      - block scope and global scope/variable
+    */
+  // //  console.log('let: ', age)
+  //  let age = 18;
+
+   /* const
+      - no hoisting
+      - no assign
+      - block scope
+   */
+
+   /* pure function: 
+    - no side effect
+    - receive input and return output
+   */
+   const month = 'january'
+
+   function getMonth(number) {
+    let text = '';
+    switch (number) {
+      case 2: {
+        text = 'February';
+        break
+      }
+      default:
+        text = 'Default'
+        break;
+    }
+    return text;
+   }
+
+   console.log('pure function: ', {
+    function: getMonth(2),
+    month
+   })
+  </script>
+
+  <!-- demo hoisting -->
+  <script type="text/javascript">
+    // Hoisting 1 with IIFE
+    var salary = '1000$';
+
+    (function () {
+      console.log('Original salary was ' + salary);
+      var salary = '6000$';
+      console.log('My New Salary ' + salary);
+    })();
+
+    // Hoisting 2 and Scope Chain with IIFE
+    var salary = '1000$';
+
+    (function () {
+      console.log('Original salary was ' + salary);
+      console.log('My New Salary ' + salary);
+    })();
+
+    // Hoisting 3
+    var x = 10;
+
+    test();
+
+    function test() {
+      function logX() {
+        console.log(x);
+      }
+      var x = 20;
+      logX();
+    }
+
+    console.log(x);
+    
+    // undefiend
+    var todoItem;
+
+    function caculateSum(x, y) {
+      if (typeof x === 'function') {
+        x();
+      }
+      // console.log('caculateSum: ', x, y)
+      // return '123'
+    }
+
+    console.log('todoItem', {
+      todoItem,
+      // caculateSum: caculateSum()
+    })
+
+    caculateSum()
+
+    const ageBE = '1';
+
+    console.log('sum age: ', 1 === ageBE, typeof ageBE)
+
+  </script>
+</body>
+</html> 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>cloure</title>
+
+</head>
+<body>
+
+  <h1 id="heading">cloure</h1>
+
+  <script type="text/javascript">
+    /* 
+      - inner function có thể truy cập biến của thằng outer function
+      - biến đó sẽ ko đổi nếu ta ko thực thi or khởi tạo lại. 
+    */
+   
+    function outerFunction() {
+      let count1 = 0;
+      let count2 = count1; // 0
+      function increment() {
+        count1++
+      }
+      function innerFunction() {
+        return {
+          count1,
+          count2
+        };
+      }
+      return {
+        innerFunction,
+        increment
+      };
+    }
+    const functionClorsure = outerFunction();
+    console.log('before increment: ', functionClorsure.innerFunction());
+    functionClorsure.increment();
+    functionClorsure.increment();
+    console.log('after increment: ', functionClorsure.innerFunction());
+
+    console.log('functionClorsure', functionClorsure)
+
+
+    
+  </script>
+</body>
+</html> 

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Operator</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Operator</h1>
+
+  <script type="text/javascript">
+
+    // const num = 0;
+    // num++ // num = num + 1
+
+    /*  logical operator
+      '' && tony => '' -> false
+      tony && '' => '' -> false
+      tony && react && lien => lien -> true
+
+      &&: xét vế trái/phải
+      - nếu vế trái là true, thì lấy giá trị vế phải
+      - nếu vế trái là false, thì lấy giá trị vế trái
+
+      ||: 
+      - nó sẽ lấy giá trị là true
+      - nó sẽ lấy giá trị mà true đầu tiên
+      tony || '' -> tony
+      '' || tony || react -> tony
+
+      ! - return true for false statements and false for true statements.
+      !! - return value negative of !
+      !tony -> !true -> false
+      !'' -> !false -> true
+      !!!tony ->  !!!true -> !!false -> !true -> false
+
+      ?? - return the first defined value
+
+      'pack' == true => 'pack' == Boolean(true) => 'pack' == 1 => Number('pack') == 1 => NaN == 1 => false
+
+    */
+
+    const text = new Number('1');
+
+    console.log('text: ', typeof text, 1 == text)
+
+    /* condition operator (ternary)
+    */
+
+    // if else
+    function getMonth(x) {
+      let text = '';
+      if (x === 1) {
+        text = 'January'
+      } else if (x === 2) {
+        text = 'February'
+      } else if (x === 3) {
+        text = 'March'
+      } else if (x === 4) {
+        text = 'April'
+      } else if (x === 5) {
+        text = 'May'
+      }
+      return text;
+    }
+
+    // ternary
+    function getMonth(x) {
+      let text = '';
+      return x === 1 ? text = 'January' 
+            : x === 2 ? text = 'February'
+            : x === 3 ? text = 'March'
+            : x === 4 ? text = 'April'
+            : x === 5 ? text = 'May'
+            : text
+    }
+    // switch case
+    function getMonth(x) {
+      let text = '';
+      switch (x) {
+        case 1:
+          text = 'January';
+          // break;
+          return text;
+        case 2:
+          text = 'February';
+          return text;
+        case 3:
+          text = 'March';
+          return text;
+        case 4:
+          text = 'April';
+          return text;
+        case 5:
+          text = 'May';
+          return text;
+        default:
+          return text;
+      }
+    }
+
+    // return early
+    function getMonth(x) {
+      let text = '';
+      if (x === 1) {
+        text = 'January';
+        return;
+      } 
+      if (x === 2) {
+        text = 'February'
+        return;
+      } 
+      if (x === 3) {
+        text = 'March'
+        return;
+      } 
+      if (x === 4) {
+        text = 'April'
+        return;
+      }  
+      if (x === 5) {
+        text = 'May'
+        return;
+      }
+      return text;
+    }
+    
+
+  </script>
+</body>
+</html> 
