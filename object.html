@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Variable</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Object</h1>
+  <div id="codes"></div>
+
+  <script type="text/javascript">
+    /* define object */
+    const user = {
+      firstName: 'tony', // string,
+      age: 20, // number
+      last_name: 'nguyen',
+      "like dog": true, // boolean
+      colors: ['red', 'blue', 'green'], // array
+      address: { // nested object
+        name: 'le van sy',
+        ward: 13,
+        city: {
+          code: 'VN',
+          tel: "+84"
+        }
+      },
+      getFullName: function() { // method
+        return this.firstName
+      }
+      // "nick name": 'antony' 
+    }
+    /* Add properties */
+    // way 1 add 
+    user.role = 'admin';
+    user.is_admin = true;
+    // user.nick name = 'antony' // wrong syntax code
+    user['nick name'] = 'antony';
+
+    // way 2: create new object
+    const newUser = {
+      ...user, // copy all properties object
+      "nick name": 'antony'
+    }
+    console.log('user', {
+      user,
+      newUser
+    })
+
+    /* access properties 
+      objectName.propertyName
+      objectName["property Name"]
+      object destructuring
+    */
+    // const lastName = user.last_name;
+    const { last_name } = user; // destructuring
+    console.log('access properties: ', {
+      firstName: user.firstName,
+      likeDog: user['like dog'],
+      lastName: last_name,
+      getFullName: user.getFullName()
+    })
+
+    // loop object: for ... in -> get all keys of properties
+    for (let key in user) {
+      console.log('for ... in: ', key, user[key])
+    }
+
+    // Object.keys() => convert object to array -> item in array is key
+    console.log('Object.keys(): ', Object.keys(user))
+
+    // Object.values() => convert object to array -> item in array is value
+    console.log('Object.values(): ', Object.values(user))
+
+    // Object.entries() => convert object to array -> item in array is value
+    console.log('Object.values(): ', Object.entries(user))
+
+    // how to check object has value -> next action
+    console.log('how to check object has value: ', Object.keys({}).length > 0)
+
+    // in operator: to check property existing in object
+    console.log('in operator: ', {
+      firstName: "firstName" in user
+    })
+
+    // ordered object
+    const codes = {
+      "+50": "Bel",
+      "+49": "Germany",
+      "+41": "VN",
+      "+44": "China",
+      "+2":  "USA"
+    }
+    for (let code in codes) {
+      document.getElementById('codes').innerHTML += codes[code] + ' '
+    }
+
+    // delete object operator
+    delete user.firstName;
+
+    // optional channing object -> ? syntax
+    const product = null;
+    console.log('optional channing object: ', product?.price)
+
+    /* copy object
+      Use the spread (...) syntax
+      Use the Object.assign() method
+      Use the JSON.stringify() and JSON.parse() methods
+    */
+    const todo = {
+      id: 1,
+      title: 'javascript',
+      caption: 'child javascript',
+      author: {
+        name: 'tony',
+        year: 2025
+      }
+    }; // memory A
+    // spread operator (es6)
+    // shallow clone/shallow copy object: copy all properties object and share same reference
+    const todoSpread = { ...todo, lastName: 'tony' }; // memory B
+    const todoAssign = Object.assign({}, todo, { lastName: 'tony' });
+
+    todoSpread.author.year = 2022;
+    
+    // deep clone/deep copy: copy all properties object, copy new reference
+    const cloneTodo = JSON.parse(JSON.stringify(todo));
+    cloneTodo.author.gender = 'male'
+
+    console.log('copy object: ', {
+      todoSpread,
+      todoAssign,
+      todo,
+      cloneTodo
+    })
+
+
+  </script>
+</body>
+</html> 

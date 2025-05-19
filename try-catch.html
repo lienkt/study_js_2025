@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Try Catch</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Try Catch</h1>
+
+  <script type="text/javascript">
+    /*
+      - thường dùng để bắt lỗi code, tránh việc bị crash app
+    */
+
+    try {
+      const dataBE = null;
+      const newData = dataBE.map(item => {
+        return {
+          ...item,
+          completed: true
+        }
+      })
+      console.log('newData: ', newData)
+    } catch (err) {
+      console.log('newData error: ', err)
+    } finally {
+      console.log('finally: ')
+    }
+   
+  </script>
+</body>
+</html> 
