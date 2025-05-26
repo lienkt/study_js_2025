@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Array</h1>
+
+  <script type="text/javascript">
+    const number = 10;
+    const nums = Array.from(new Array(number), (_, i) => i * 2);
+
+    console.log("nums: ", nums);
+
+    // push
+    const animals = ['cat', 'dog', 'pig'];
+    animals.push('bird');
+
+    console.log('push: ', {
+      animalLeghth: animals.length,
+      animals
+    })
+
+    /* The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements. 
+      Syntax:  splice(start, deleteCount, item1, item2, itemN)
+        - start (require): The index at which to start changing the array.
+        - deleteCount (optional): An integer indicating the number of elements in the array to remove from start.
+        - item1, item2 … (optional): The elements to add to the array, beginning from start
+      Concept:
+        - remove item of array
+        - add new item of array
+        - replace existing item of array: [1,2,3,4,5]; item = 5 & index = 2 => [1,2,5,4,5]
+      Sample:
+        - remove 2 items from index 2: months.splice(2, 2);
+        - remove 2 items from index 2 and add item 3 at index 2: months.splice(2, 2, 3);
+        - add item 3 into array from index 1: months.splice(1, 0, 3);
+        - remove 1 item from index 2:   months.splice(2, 1);
+    */
+
+    const instrument = ['angel', 'clown', 'mandarin', 'sturgeon'];
+    // Lesson 1 splice: Remove 0 elements before index 2, and insert "drum" and "guitar"
+
+    // Lesson 2 splice: Remove 2 elements from index 0, and insert "parrot", "anemone" and "blue"
+
+    /*
+      The indexOf() method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+        Syntax: indexOf(searchElement, fromIndex)
+        searchElement (require): Element to locate in the array.
+        fromIndex (optional): The index to start the search at. 
+      Ex: beats = ['ant', 'bison', 'camel', 'duck', 'bison']
+      beats.indexOf('bison') -> 1
+      beats.indexOf('bison', 2) -> 4
+      beats.indexOf('duck') -> 3
+      beats.indexOf('tony') -> -1
+    */
+
+    /* filter
+    The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+      Syntax:  filter(ele => { … })
+    */
+    const countries = [
+      { id: 1, title: 'VN' },
+      { id: 2, title: 'US' },
+      { id: 3, title: 'UK' },
+      { id: 4, title: 'JP' },
+      { id: 5, title: 'CN' },
+    ];
+    // delete UK from countries
+    const countriesFiltered = countries.filter(item => item.title !== 'UK');
+    console.log('filter: ', countriesFiltered);
+
+     /* findIndex -> apply object[]
+      - If you need the index of the found element in the array, use findIndex().
+      - The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1
+    */
+    const indexVN = countries.findIndex(item => item.title === 'VN')
+    console.log('findIndex VN: ', indexVN);
+
+    /* map
+      The map() method creates a new array populated with the results of calling a provided function on every element in the calling array.
+    */
+    const countriesTele = countries.map(item => {
+      return {
+        ...item, // copy all properites
+        teleCode: "+84"
+      }
+    });
+    console.log('array map: ', countriesTele);
+
+    // Lesson 1:
+    /*
+      - change all title short hand = full name
+      - show length of title
+      - in ra output2 with title length > 10
+        const output = [
+          { id: 1, title: 'Viet Nam', titleLengh: 8 },
+          { id: 2, title: 'United States', titleLengh: 13 },
+          { id: 3, title: 'United Kingdom', titleLengh: 14 },
+          { id: 4, title: 'Japanese', titleLengh: 8 },
+          { id: 5, title: 'China', titleLengh: 5 },
+        ]
+        const output2 = [
+          { id: 2, title: 'United States', titleLengh: 13 },
+          { id: 3, title: 'United Kingdom', titleLengh: 14 }
+        ]
+    */
+
+
+
+  </script>
+</body>
+</html> 

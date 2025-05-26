@@ -17,7 +17,139 @@
       Deep equality (so sánh sâu)
     */
 
-    //  Referential equality (so sánh tham chiếu)
+    // Referential equality (so sánh tham chiếu)
+    const obj1 = {
+      name: 'tony',
+      fullName: 'nguyen',
+      age: 20,
+       address: {
+        city: 'hcm',
+        ward: 13
+      }
+    }; // memory A
+    const obj2 = obj1; // memory B
+    const obj3 = {
+      name: 'tony',
+      fullName: 'nguyen',
+      age: 20,
+      address: {
+        city: 'hcm',
+        ward: 13
+      }
+    }; // // memory C
+    console.log("object: ", {
+      obj1,
+      obj2,
+      obj3
+    })
+
+    console.log('Referential equality: ', {
+      obj1And2: obj1 === obj2,
+      obj1And3: obj1 === obj3
+    });
+
+    // manual equality
+    const isManualEquality = (obj1, obj2) => {
+      const keys1 = Object.keys(obj1); // convert object to array
+      const keys2 = Object.keys(obj2); // convert object to array
+
+      if (keys1.length !== keys2.length) return false;
+      return obj1.name === obj2.name && obj1.fullName === obj2.fullName;
+    }
+    console.log('Manual equality: ', isManualEquality(obj1, obj3));
+
+    // shallow equality -> so sánh nông, work fine if all value is primitive
+    const isShallowEquality = (obj1, obj2) => {
+      const keys1 = Object.keys(obj1); // convert object to array
+      const keys2 = Object.keys(obj2); // convert object to array
+
+      if (keys1.length !== keys2.length) return false;
+
+      for (let key of keys1) {
+        const val1 = obj1[key];
+        const val2= obj2[key];
+        if (val1 !== val2) return false
+      }
+      return true;
+    }
+    console.log('Shallow equality: ', isShallowEquality(obj1, obj3));
+
+    // deep equality -> so sánh sâu, so sánh lun cả nested  object
+    function isObject(val) {
+      return val !== null && typeof val === 'object'
+    }
+    const isDeepEquality = (obj1, obj2) => {
+      const keys1 = Object.keys(obj1); // convert object to array
+      const keys2 = Object.keys(obj2); // convert object to array
+
+      if (keys1.length !== keys2.length) return false;
+
+      for (let key of keys1) {
+        const val1 = obj1[key];
+        const val2= obj2[key];
+        const areObjects = isObject(val1) && isObject(val2);
+        if(areObjects && !isDeepEquality(val1, val2) || !areObjects && val1 !== val2) {
+          return false
+        }
+      }
+      return true;
+    }
+    console.log('Deep equality: ', isDeepEquality(obj1, obj3));
+
+    // shallow copy/shallow clone: copy value, copy same reference
+    // deep copy/deep clone: copy value, but create new reference
+    const user = {
+      firstName: 'nguyen',
+      lastName: 'truong',
+      company: {
+        size: 200,
+        ward: 7
+      }
+    };
+    const totalCount = 10;
+
+    function getFullName(info) {
+      // info.fullName = info.firstName + ' ' + info.lastName; // mutate
+      // const newUser = {...user}; // shallow copy/shallow clone
+      const newUser = JSON.parse(JSON.stringify(user)); // deep copy/deep clone
+      newUser.fullName = newUser.firstName + ' ' + newUser.lastName;
+      newUser.firstName = 'lien';
+      newUser.company.size = 300;
+      return newUser;
+    }
+    console.log('shallow copy: ', {
+      user,
+      newUser: getFullName(user)
+    });
+
+    // shalow/deep copy with array
+    const todos = [
+      { id: 1, product: 'iphone', isStock: false },
+      { id: 2, product: 'samsung', isStock: false },
+      { id: 3, product: 'nokia', isStock: false }
+    ];
+    const todoIdFromBE = 2;
+
+    function transformTodosWithOrder(todoId) {
+      // const newTodos = [...todos]; // shadow copy
+      const newTodos = JSON.parse(JSON.stringify(todos)); // deep copy
+      const index = todos.findIndex(item => item.id === todoId);
+
+      if (index === -1) return newTodos;
+      newTodos[index].isStock = true;
+      return newTodos;
+      // return newTodos.map(item => {
+      //   return {
+      //     ...item,
+      //     isStock: item.id === todoId
+      //   }
+      // })
+    }
+    const newTodos = transformTodosWithOrder(todoIdFromBE);
+    console.log("shalow/deep copy with array: ", {
+      newTodos,
+      todos
+    })
 
   </script>
 </body>
