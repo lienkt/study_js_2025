@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Function</title>
+
+</head>
+<body>
+
+  <h1 id="heading">JSON</h1>
+
+  <script type="text/javascript">
+    /* JSON stringify 
+      A common use of JSON is to exchange data to/from a web server.
+      When sending data to a web server, the data has to be a string.
+      Convert a JavaScript object into a string with JSON.stringify().
+
+      JSON parse
+      A common use of JSON is to exchange data to/from a web server.
+      When receiving data from a web server, the data is always a string.
+      Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+    */
+   /* BE create API: create a resource
+    POST: /api/user
+    body data: JSON string
+    { firstName: xx, lastName: xx, email: xx }
+
+   */
+    const bodyData = true;
+    const bodyDataStringify = JSON.stringify(bodyData);
+    const dataFromBE = JSON.parse(bodyDataStringify);
+
+    console.log('JSON stringify: ', {
+      bodyData,
+      bodyDataStringify,
+      dataFromBE
+    });
+
+  </script>
+</body>
+</html> 
