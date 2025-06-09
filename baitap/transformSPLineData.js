@@ -40,3 +40,36 @@ output
   ]
 }
 */
+
+const output = {
+  categories: [],
+  series: [
+    {
+      name: "clicks",
+      data: [],
+    },
+    {
+      name: "impressions",
+      data: [],
+    },
+  ],
+};
+
+input.forEach((item) => {
+  output.categories.push(item.date);
+  output.series.forEach((serie) => {
+    if (
+      serie.name === "clicks" &&
+      item.clicks &&
+      !serie.data.includes(item.clicks)
+    ) {
+      serie.data.push(item.clicks);
+    } else if (item.impressions && !serie.data.includes(item.impressions)) {
+      serie.data.push(item.impressions);
+    }
+  });
+});
+
+console.log(output);
+console.log(output.series[0].data);
+console.log(output.series[1].data);
