@@ -92,12 +92,13 @@ const userBooks = [
     age: 18,
   },
 ];
-const books = userBooks.reduce((acc, user) => {
-  user.books.forEach((book) => {
-    if (!acc.includes(book)) {
-      acc.push(book);
-    }
-  });
-  return acc;
+const books = userBooks.reduce((acc, currItem) => {
+  const value = currItem['books'];
+  return acc.concat(value);
+  // user.books.forEach((book) => {
+  //   if (!acc.includes(book)) {
+  //     acc.push(book);
+  //   }
+  // });
 }, []);
 console.log(books);

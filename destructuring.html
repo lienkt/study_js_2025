@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Destructuring</title>
+
+</head>
+<body>
+
+  <h1 id="heading">Destructuring</h1>
+
+  <script type="text/javascript">
+    const firstName = 'Lien';
+
+    // destructuring operator
+    const person = {
+      firstName: 'tony',
+      lastName: 'nguyen',
+      age: 18,
+      address: {
+        name: 'le quy don',
+        district: 20,
+        country: {
+          name: 'VN'
+        }
+      }
+    };
+    // const firstNamePerson = person.firstName;
+    // rest operator
+    const { 
+      firstName: firstNamePerson, // rename default
+      address: {
+        district,
+        country: {
+          name
+        },
+        ...restAddress
+      },
+      ...rest
+    } = person;
+
+    // use rest operator to delete item in object
+    const bodyData = {
+      firstName: 'lien',
+      lastName: 'kim',
+      email: 'lien@gmail.com',
+      password: 1234
+    };
+    const { password, ...restBodyData } = bodyData || {};
+    // delete bodyData.password;
+
+    console.log('firstName: ', { firstNamePerson, district, name, rest, restAddress, restBodyData })
+  
+    // array destructuring
+    const numbers = [1,2,3,4,5];
+    const [,,,abc] = numbers;
+
+    console.log('array destructuring: ', abc)
+  
+    /* source = 1, destination = 5
+      [20,43,45,12,23,46] = [20,45,12,23,43,46]
+      swap item
+      [20,43,45,12,23,46] = [20,46,45,12,23,43]
+    */
+    let source = 1;
+    let destination = 3;
+    // let temp;
+    // temp = source;
+    // source = destination;
+    // destination = temp;
+    [source, destination] = [destination, source]
+    console.log(source, destination)
+  </script>
+</body>
+</html> 
