@@ -22,6 +22,10 @@
         - no name of function
         - not hoisting (can't access before declarations)
       Notes: khi 1 function mà nhận vào 2 tham số trở lên, thì nên đổi parameter thành {}
+      - arrow function
+        - no name of function
+        - no hoisting
+        - no this context
     */
 
     // pure function
@@ -66,6 +70,51 @@
       return width * height;
     }
     console.log('calculateArea: ', calculateArea(200, 300))
+
+    // arrow function
+    const animal = {
+      name: 'dog',
+      age: 18,
+      year: 2005,
+      type: '4 chan',
+      getName: function() {
+        console.log("getName: ", this)
+      },
+      getAge: () => {
+        console.log("getAge: ", this)
+      }
+    };
+
+    console.log('arrow function: ', {
+      getName: animal.getName(),
+      getAge: animal.getAge(),
+    })
+
+    // specify parameter
+    function square(x, y) { 
+      return x + y
+    }
+    // const squareArrow = (x, y) => (x + y);
+    const squareArrow = (x, y) => ({ x: x + y });
+
+    console.log('squareArrow: ', squareArrow(1,2));
+
+    // curry function sumCurry(1)(3)(4) = 3
+    const sumCurry = (x) => (y) => (z) => {
+      return x + y + z
+    }
+    console.log('curry function: ', sumCurry(1)(2)(3));
+
+    // HOF (high order function) HOF
+    function applyTwice(func, arg) {
+      return func(func(arg)); // sum(sum(10)) // sum(15) -> return 20
+    }
+    function sum(x) {
+      return x + 5;
+    }
+    console.log('HOF: ', applyTwice(sum, 10));
+
+
 
   </script>
 </body>

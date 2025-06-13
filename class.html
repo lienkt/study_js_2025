@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Function</title>
+
+</head>
+<body>
+
+  <h1 id="heading">HOF</h1>
+
+  <script type="text/javascript">
+    class Car {
+      constructor(name, age) {
+        this.name = name,
+        this.age = age
+      }
+      getAge() {
+        return this.age
+      }
+      getBrandName() {
+        return this.name
+      }
+    }
+
+    class Bmw extends Car {
+      constructor(brandName, brandAge) {
+        super(brandName, brandAge)
+      }
+
+      getEngine() {
+        return 'v8'
+      }
+
+    }
+
+    const bmw = new Bmw('bmw', 18);
+    console.log('bmw: ', bmw.getEngine())
+
+
+
+
+  </script>
+</body>
+</html> 
