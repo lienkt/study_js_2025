@@ -21,7 +21,6 @@ const grades = [
   { name: "Courtney", grade: 15, sex: "F" },
   { name: "Jane", grade: 9, sex: "F" },
 ];
-
 const average = (arr) => arr.reduce((sum, val) => sum + val, 0) / arr.length;
 const males = grades.filter((student) => student.sex === "M");
 const females = grades.filter((student) => student.sex === "F");
